@@ -1,0 +1,30 @@
+from collections import deque
+
+
+def likes(names):
+    names = deque(names)
+    n_start = len(names)
+    if n_start >= 3:
+        join = deque([', ', ' and ', ''])
+        if n_start > 3:
+            n = 2
+        else:
+            n = 3
+    elif n_start == 2:
+        n = 2
+        join = deque([' and ', ''])
+    result = ''
+    if len(names) > 1:
+        for i in range(n):
+            name = names.popleft()
+            result += name + join.popleft()
+    if n_start > 3:
+       result += f'{len(names)} others like this'
+    elif 2 <= n_start <= 3:
+        result += ' like this'
+    elif n_start == 1:
+        result += names.popleft() + ' likes this'
+    else:
+         result += 'no one likes this'
+    return result
+         
