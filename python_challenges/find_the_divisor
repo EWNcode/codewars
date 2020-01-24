@@ -1,0 +1,9 @@
+def divisors(integer):
+    int_list = []
+    for i in range(2, integer):
+        if integer % i == 0:
+            int_list.append(i)
+    if len(int_list) > 0:
+        return int_list
+    else:
+        return f'{integer} is prime'
